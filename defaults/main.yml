@@ -1,0 +1,4 @@
+---
+join_token_path: "/var/local"
+certificates_path: "/etc/ssl/certs"
+private_keys_path: "/etc/ssl/private"

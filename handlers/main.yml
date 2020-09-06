@@ -1,0 +1,5 @@
+---
+- name: apt-mark
+  become: true
+  shell: "apt-mark hold kubelet kubeadm kubectl"
+  warn: false

@@ -1,0 +1,10 @@
+# File              : uninstall.yml
+# Author            : Rustam Khafizov <super.rustamm@gmail.com>
+# Date              : 07.09.2020
+# Last Modified Date: 07.09.2020
+# Last Modified By  : Rustam Khafizov <super.rustamm@gmail.com>
+
+---
+- name: enabling swap
+  become: true
+  shell: 

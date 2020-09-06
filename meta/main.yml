@@ -1,0 +1,22 @@
+galaxy_info:
+  author: AloySobek
+  description: |
+      Installing kubernetes control plane.
+      Either multiple master or single master.
+      Can be installed with external etcd or without it.
+  company: self
+  license: MIT
+  min_ansible_version: 2.9
+  platforms:
+    - name: debian
+      versions:
+        - buster
+        - stretch
+  galaxy_tags:
+    - kubernetes
+    - multiple-master
+    - high-avialability-cluster
+dependencies:
+  - role:  aloysobek.ansible_role_docker
+    vars:
+      state: 'install'

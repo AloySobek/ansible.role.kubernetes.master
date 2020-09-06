@@ -1,0 +1,40 @@
+---
+- name: update before start
+  become: true
+  apt:
+    update_cache: true
+    cache_valid_time: 0
+    force_apt_get: true
+    upgrade: dist
+
+- name: installing dependencies
+  become: true
+  apt:
+    name: "{{ item }}"
+    state: latest
+  loop: "{{ dependencies }}"
+
+- name: adding google gpg key
+  become: true
+  apt_key:
+    url: "https://packages.cloud.google.com/apt/doc/apt-key.gpg"
+    state: present
+
+- name: adding google repository
+  become: true
+  apt_repository:
+    repo: "deb https://apt.kubernetes.io/ kubernetes-xenial main"
+    state: present
+    update_cache: true
+
+- name: installing kubernetes tools
+  become: true
+  apt:
+    name: "{{ item }}"
+    state: latest
+  loop:
+    - kubelet
+    - kubeadm
+    - kubectl
+  notify:
+    - apt-mark
